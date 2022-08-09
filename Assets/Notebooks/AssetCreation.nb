@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3149,         95]
-NotebookOptionsPosition[      2194,         69]
-NotebookOutlinePosition[      2604,         85]
-CellTagsIndexPosition[      2561,         82]
+NotebookDataLength[      8572,        240]
+NotebookOptionsPosition[      6825,        199]
+NotebookOutlinePosition[      7233,        215]
+CellTagsIndexPosition[      7190,        212]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,27 +30,28 @@ Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"$AssetDirectory", "=", 
   RowBox[{"ParentDirectory", "[", 
-   RowBox[{"ParentDirectory", "[", 
-    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
-   "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], "\[IndentingNewLine]", 
  RowBox[{"$SpriteDirectoryPath", "=", 
   RowBox[{"FileNameJoin", "[", 
    RowBox[{"{", 
     RowBox[{"$AssetDirectory", ",", "\"\<Sprites\>\""}], "}"}], 
    "]"}]}]}], "Input",
  InitializationCell->True,
- CellChangeTimes->{{3.868821668431294*^9, 3.86882172542384*^9}},
- CellLabel->"In[3]:=",ExpressionUUID->"df385c90-5aa5-46d1-86b7-a9f05d7fe8c5"],
-
-Cell[BoxData["\<\"C:\\\\Users\\\\Alec\\\\Coding\\\\Unity\\\\Clones\\\\Pong\"\>\
-"], "Output",
- CellChangeTimes->{{3.8688217234370537`*^9, 3.8688217256452804`*^9}},
- CellLabel->"Out[3]=",ExpressionUUID->"37598cc1-755e-4167-bcbc-f7302f282f0c"],
+ CellChangeTimes->{{3.868821668431294*^9, 3.86882172542384*^9}, {
+  3.8688218536980953`*^9, 3.868821855765272*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"df385c90-5aa5-46d1-86b7-a9f05d7fe8c5"],
 
 Cell[BoxData["\<\"C:\\\\Users\\\\Alec\\\\Coding\\\\Unity\\\\Clones\\\\Pong\\\\\
-Sprites\"\>"], "Output",
- CellChangeTimes->{{3.8688217234370537`*^9, 3.8688217256472797`*^9}},
- CellLabel->"Out[4]=",ExpressionUUID->"e63b0083-86cd-4d1a-9f52-d57669fedd2e"]
+Assets\"\>"], "Output",
+ CellChangeTimes->{{3.8688217234370537`*^9, 3.8688217256452804`*^9}, 
+   3.8688218562948933`*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"1f757e52-e84a-4fef-87a2-01623cbb9c73"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Alec\\\\Coding\\\\Unity\\\\Clones\\\\Pong\\\\\
+Assets\\\\Sprites\"\>"], "Output",
+ CellChangeTimes->{{3.8688217234370537`*^9, 3.8688217256452804`*^9}, 
+   3.8688218562968893`*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"93009b68-26ca-4dab-8384-7f10e4515d10"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -60,15 +61,144 @@ Cell["Sprites", "Section",
   3.868821619872911*^9}},ExpressionUUID->"0427b562-646e-46e1-8032-\
 5a6fb5803795"],
 
+Cell[CellGroupData[{
+
 Cell["Square", "Subsection",
  CellChangeTimes->{{3.86882161571055*^9, 
   3.8688216254074535`*^9}},ExpressionUUID->"0f2cfa5a-a4a2-480f-ab8e-\
-f03f3d04c150"]
+f03f3d04c150"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"img", "=", 
+   RowBox[{"Rasterize", "[", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", 
+      RowBox[{"Background", "\[Rule]", "White"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"256", ",", "256"}], "}"}]}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"{", 
+     RowBox[{"$SpriteDirectoryPath", ",", "\"\<Square.png\>\""}], "}"}], 
+    "]"}], ",", "img"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.868821753080165*^9, 3.8688218343601947`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"3861fc2a-e5fc-49ca-b7bd-1dc0cb49a17e"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Alec\\\\Coding\\\\Unity\\\\Clones\\\\Pong\\\\\
+Assets\\\\Sprites\\\\Square.png\"\>"], "Output",
+ CellChangeTimes->{{3.8688218294795322`*^9, 3.8688218773460927`*^9}},
+ CellLabel->"Out[16]=",ExpressionUUID->"0abc7779-6d1c-40cb-97d5-1e7f7ffffe54"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Field", "Subsection",
+ CellChangeTimes->{{3.868909763314576*^9, 
+  3.8689097636170664`*^9}},ExpressionUUID->"7251453c-4b4d-4874-bb28-\
+a8e760d14bad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"r", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"White", ",", 
+       RowBox[{"Dashing", "[", 
+        RowBox[{"{", 
+         RowBox[{"0.04", ",", "0.06"}], "}"}], "]"}], ",", 
+       RowBox[{"Thickness", "[", "0.01", "]"}], ",", 
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "r"}], "]"}], ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "r"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"5", "r"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "r"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{
+             RowBox[{"-", "5"}], "r"}]}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+     RowBox[{"Background", "->", "None"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "512"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"img", "=", 
+   RowBox[{"Rasterize", "[", 
+    RowBox[{"g", ",", 
+     RowBox[{"Background", "\[Rule]", "None"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "1024"}], ",", 
+     RowBox[{"RasterSize", "\[Rule]", "512"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"img", "//", "ImageDimensions"}], "\[IndentingNewLine]", 
+ RowBox[{"path", "=", 
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"FileNameJoin", "[", 
+     RowBox[{"{", 
+      RowBox[{"$SpriteDirectoryPath", ",", "\"\<Field.png\>\""}], "}"}], 
+     "]"}], ",", "img"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"FileSize", "[", "path", "]"}]}], "Input",
+ CellChangeTimes->{{3.868909765110727*^9, 3.868910060812061*^9}, {
+   3.868910099390789*^9, 3.8689101936182404`*^9}, 3.8689103545544043`*^9},
+ CellLabel->
+  "In[139]:=",ExpressionUUID->"e07ae6dc-2b7c-4640-a68d-d2ea774347bf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"512", ",", "2478"}], "}"}]], "Output",
+ CellChangeTimes->{{3.868909854245781*^9, 3.868909935865262*^9}, {
+   3.868909976917082*^9, 3.868910062147078*^9}, {3.8689100998249073`*^9, 
+   3.868910196358261*^9}, 3.8689103552661233`*^9},
+ CellLabel->
+  "Out[142]=",ExpressionUUID->"9b2f8fe2-e192-4a66-8433-ea256d7812ef"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Alec\\\\Coding\\\\Unity\\\\Clones\\\\Pong\\\\\
+Assets\\\\Sprites\\\\Field.png\"\>"], "Output",
+ CellChangeTimes->{{3.868909854245781*^9, 3.868909935865262*^9}, {
+   3.868909976917082*^9, 3.868910062147078*^9}, {3.8689100998249073`*^9, 
+   3.868910196358261*^9}, 3.868910355361869*^9},
+ CellLabel->
+  "Out[143]=",ExpressionUUID->"c87ae617-1893-4eac-b8e2-5562d84a9802"],
+
+Cell[BoxData[
+ TemplateBox[{"13.278`", "\"kB\"", "kilobytes", "\"Kilobytes\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.868909854245781*^9, 3.868909935865262*^9}, {
+   3.868909976917082*^9, 3.868910062147078*^9}, {3.8689100998249073`*^9, 
+   3.868910196358261*^9}, 3.8689103553648667`*^9},
+ CellLabel->
+  "Out[144]=",ExpressionUUID->"fabb5e4e-470d-4ced-9397-7c3e6fbf8a8f"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{861., 624.75},
-WindowMargins->{{Automatic, 205.5}, {Automatic, 37.5}},
+WindowMargins->{{Automatic, 18.75}, {Automatic, 30}},
 FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"6fefd470-c8db-417a-9455-ac0cf7707ef1"
@@ -87,14 +217,29 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 161, 3, 98, "Title",ExpressionUUID->"6a016d9d-2871-43d1-853e-3f5e3fbc07c4"],
 Cell[CellGroupData[{
-Cell[766, 29, 554, 13, 64, "Input",ExpressionUUID->"df385c90-5aa5-46d1-86b7-a9f05d7fe8c5",
+Cell[766, 29, 558, 12, 64, "Input",ExpressionUUID->"df385c90-5aa5-46d1-86b7-a9f05d7fe8c5",
  InitializationCell->True],
-Cell[1323, 44, 241, 3, 32, "Output",ExpressionUUID->"37598cc1-755e-4167-bcbc-f7302f282f0c"],
-Cell[1567, 49, 252, 3, 32, "Output",ExpressionUUID->"e63b0083-86cd-4d1a-9f52-d57669fedd2e"]
+Cell[1327, 43, 280, 4, 32, "Output",ExpressionUUID->"1f757e52-e84a-4fef-87a2-01623cbb9c73"],
+Cell[1610, 49, 291, 4, 32, "Output",ExpressionUUID->"93009b68-26ca-4dab-8384-7f10e4515d10"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1856, 57, 152, 3, 67, "Section",ExpressionUUID->"0427b562-646e-46e1-8032-5a6fb5803795"],
-Cell[2011, 62, 155, 3, 54, "Subsection",ExpressionUUID->"0f2cfa5a-a4a2-480f-ab8e-f03f3d04c150"]
+Cell[1938, 58, 152, 3, 67, "Section",ExpressionUUID->"0427b562-646e-46e1-8032-5a6fb5803795"],
+Cell[CellGroupData[{
+Cell[2115, 65, 155, 3, 54, "Subsection",ExpressionUUID->"0f2cfa5a-a4a2-480f-ab8e-f03f3d04c150"],
+Cell[CellGroupData[{
+Cell[2295, 72, 718, 19, 48, "Input",ExpressionUUID->"3861fc2a-e5fc-49ca-b7bd-1dc0cb49a17e"],
+Cell[3016, 93, 277, 3, 32, "Output",ExpressionUUID->"0abc7779-6d1c-40cb-97d5-1e7f7ffffe54"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3342, 102, 155, 3, 54, "Subsection",ExpressionUUID->"7251453c-4b4d-4874-bb28-a8e760d14bad"],
+Cell[CellGroupData[{
+Cell[3522, 109, 2109, 58, 143, "Input",ExpressionUUID->"e07ae6dc-2b7c-4640-a68d-d2ea774347bf"],
+Cell[5634, 169, 353, 7, 32, "Output",ExpressionUUID->"9b2f8fe2-e192-4a66-8433-ea256d7812ef"],
+Cell[5990, 178, 400, 6, 32, "Output",ExpressionUUID->"c87ae617-1893-4eac-b8e2-5562d84a9802"],
+Cell[6393, 186, 380, 7, 39, "Output",ExpressionUUID->"fabb5e4e-470d-4ced-9397-7c3e6fbf8a8f"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }

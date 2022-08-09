@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
     [SerializeField] private AudioClip _paddleHitClip;
     [SerializeField] private AudioClip _wallHitClip;
+    [SerializeField] private AudioClip _startClip;
+    [SerializeField] private AudioClip _scoreClip;
 
     private float _bounceRandomness = 0.5f;
-    private float _resetDuration = 1.0f;
+    private float _resetDuration = 2.0f;
     private bool _isReseting = false;
     private GameController _gameController;
     [SerializeField] private Rigidbody2D _rb;
@@ -18,6 +18,7 @@ public class BallController : MonoBehaviour
     public Vector2 Velocity => _rb.velocity;
 
     private float _resetTimer = 0.0f;
+    private float _maxRingScale;
 
     private readonly Vector2 _maxAngleVector = (new Vector2(1, 2)).normalized;
 
@@ -41,12 +42,16 @@ public class BallController : MonoBehaviour
 
     private bool _active;
     private Vector2 _cachedVelocity;
+    [SerializeField] private SpriteRenderer _baseRenderer;
+    [SerializeField] private SpriteRenderer _ringRenderer;
 
     public void Initialize(GameController gameController, float speed)
     {
         _gameController = gameController;
         _speed = speed;
         Active = true;
+
+        _maxRingScale = _ringRenderer.transform.localScale.x;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -83,11 +88,21 @@ public class BallController : MonoBehaviour
         if (_isReseting && this.Active)
         {
             _resetTimer += Time.deltaTime;
+            float t = _resetTimer / _resetDuration;
+
+            float ringScale = Mathf.Lerp(_maxRingScale,1,t);
+
+            _ringRenderer.transform.localScale = new Vector3(ringScale, ringScale, 1.0f);
+            var rcol = _ringRenderer.color;
+            rcol.a = t;
+            _ringRenderer.color = rcol;
+
             if (_resetTimer > _resetDuration)
             {
                 var rvel = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
                 _rb.velocity = rvel;
                 _isReseting = false;
+                _audioSource.PlayOneShot(_startClip);
             }
         }
     }

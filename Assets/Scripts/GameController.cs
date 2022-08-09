@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private UIController _uiController;
 
     [SerializeField] private string _menuSceneName;
+    [SerializeField] private GameObject _scoreEffectPrefab;
 
 
     public bool IsPaused
@@ -52,6 +53,11 @@ public class GameController : MonoBehaviour
     public void OnOpponentScored() => OnBallScored(false);
     public void OnBallScored(bool playerScored)
     {
+        var go = Instantiate<GameObject>(_scoreEffectPrefab, _ball.transform.position, Quaternion.identity);
+        var lookat = _ball.transform.position;
+        lookat.x = 0.0f;
+        go.transform.LookAt(lookat);
+        
         PointReset();
 
         if (playerScored)
